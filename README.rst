@@ -81,36 +81,32 @@ But **DO NOT use it on a regular basis**.
 Hacking
 =======
 
-Get the source from the main Bitmask repo::
-
-    git clone https://leap.se/git/bitmask_client
-
-The code is also browsable online at::
+The code is browsable online at::
 
     https://leap.se/git/?p=bitmask_client.git
 
-Some steps need to be run when setting a development environment for the first time.
+If you want to hack on the `develop` branch, the preferred way is to use the `bootstrap_develop.sh` script.
 
-Enable a **virtualenv** to isolate your libraries. (Current *.gitignore* knows about a virtualenv in the root tree. If you do not like that place, just change ``.`` for *<path.to.environment>*)::
 
-  $ virtualenv .
-  $ source bin/activate
+  $ curl https://raw.github.com/leapcode/bitmask_client/develop/pkg/scripts/bootstrap_develop.sh
+  $ chmod +x bootstrap_develop.sh
 
-Make sure you are in the development branch::
+Run the bootstrap script
 
-  (bitmask)$ git checkout develop
+  $ ./bootstrap_develop.sh init
 
-Symlink your global pyside libraries::
-
-  (bitmask)$ pkg/postmkvenv.sh
-
-And make your working tree available to your pythonpath::
-
-  (bitmask)$ python2 setup.py develop
+This will download all the required repositories and setup the development environment.
 
 Run Bitmask::
 
-  (bitmask)$ bitmask --debug
+  $ ./bootstrap_develop.sh run -dN  # -d for debug and -N for No version check
+
+or
+
+  $ source bitmask.venv/bin/activate
+  $ python bitmask_client/src/leap/bitmask/app.py -dN
+
+**Note**: The `No version check` flag `-N` is required since in the develop branch we have not set (yet) the version number compatible with the current running servers.
 
 Testing
 =======
