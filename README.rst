@@ -85,26 +85,25 @@ The code is browsable online at::
 
     https://leap.se/git/?p=bitmask_client.git
 
-If you want to hack on the `develop` branch, the preferred way is to use the `bootstrap_develop.sh` script.
+If you want to hack on the `develop` branch, the preferred way is to use the `bootstrap_develop.sh` script::
 
+    $ curl https://raw.github.com/leapcode/bitmask_client/develop/pkg/scripts/bootstrap_develop.sh
+    $ chmod +x bootstrap_develop.sh
 
-  $ curl https://raw.github.com/leapcode/bitmask_client/develop/pkg/scripts/bootstrap_develop.sh
-  $ chmod +x bootstrap_develop.sh
+Run the bootstrap script::
 
-Run the bootstrap script
-
-  $ ./bootstrap_develop.sh init
+    $ ./bootstrap_develop.sh init
 
 This will download all the required repositories and setup the development environment.
 
 Run Bitmask::
 
-  $ ./bootstrap_develop.sh run -dN  # -d for debug and -N for No version check
+    $ ./bootstrap_develop.sh run -dN  # -d for debug and -N for No version check
 
-or
+or::
 
-  $ source bitmask.venv/bin/activate
-  $ python bitmask_client/src/leap/bitmask/app.py -dN
+    $ source bitmask.venv/bin/activate
+    $ python bitmask_client/src/leap/bitmask/app.py -dN
 
 **Note**: The `No version check` flag `-N` is required since in the develop branch we have not set (yet) the version number compatible with the current running servers.
 
